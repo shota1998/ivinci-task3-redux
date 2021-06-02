@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import classes from "./App.module.css";
 
@@ -54,33 +54,31 @@ export default class App extends React.Component {
     });
   }
 
-  
-  
   render() {
     return (
       <div>
         <Header totalQuantity={this.sumQuantity()} />
-        <Route
-          exact
-          path="/"
-          render={() => (
-            <SelectItem
-              items={this.state.items}
-              onClickFunc={this.addItem.bind(this)}
-            />
-          )}
-        />
-        <Route
-          exact
-          path="/cart"
-          render={() => (
-            <Cart
-              items={this.state.items}
-              addButtonFunc={this.addItem.bind(this)}
-              removeButtonFunc={this.removeItem.bind(this)}
-            />
-          )}
-        />
+        <Switch>
+          <Route
+            path="/cart"
+            render={() => (
+              <Cart
+                items={this.state.items}
+                addButtonFunc={this.addItem.bind(this)}
+                removeButtonFunc={this.removeItem.bind(this)}
+              />
+            )}
+          />
+          <Route
+            path="/"
+            render={() => (
+              <SelectItem
+                items={this.state.items}
+                onClickFunc={this.addItem.bind(this)}
+              />
+            )}
+          />  
+        </Switch>
       </div>
     );
   }
