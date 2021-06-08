@@ -3,9 +3,9 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import classes from "./App.module.css";
 
-import Header from "./components/Header";
-import SelectItem from "./components/pages/SelectItem";
-import Cart from "./components/pages/Cart";
+import Header from "./features/cart/components/Header";
+import SelectItem from "./features/cart/components/pages/SelectItem";
+import Cart from "./features/cart/components/pages/Cart";
 
 export default class App extends React.Component {
   constructor() {

@@ -13,7 +13,7 @@ class Item extends React.Component {
             <div className={classes.price}>${this.props.value}</div>
           </header>
           <p>{this.props.description}</p>
-          <AddCartButton onClickFunc={this.props.onClickFunc}>
+          <AddCartButton id={this.props.id}>
             Add to Cart
           </AddCartButton>
         </section>
