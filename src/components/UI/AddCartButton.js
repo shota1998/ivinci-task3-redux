@@ -1,21 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { addItem } from "../../redux/actions";
 import classes from "./AddCartButton.module.css";
 
-class AddCartButton extends React.Component {
-  handleAddItem = () => {
-    this.props.addItem(this.props.id);
-  };
+const AddCartButton = ({ onClick, children }) => (
+  <div className={classes.actions}>
+    <button onClick={onClick}>{children}</button>
+  </div>
+);
 
-  render() {
-    return (
-      <div className={classes.actions}>
-        <button onClick={this.handleAddItem}>Add</button>
-      </div>
-    );
-  }
-}
-
-export default connect(null, { addItem })(AddCartButton);
+export default AddCartButton;

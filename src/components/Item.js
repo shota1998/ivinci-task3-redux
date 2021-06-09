@@ -1,9 +1,12 @@
 import React from "react";
+import { connect } from "react-redux";
+
+import { addItem } from "../redux/actions";
 
 import classes from "./Item.module.css";
 import AddCartButton from "./UI/AddCartButton";
 
-const Item = ({ item }) => (
+const Item = ({ item, addItem }) => (
   <li className={classes.item}>
     <section className={classes.card}>
       <header>
@@ -11,9 +14,11 @@ const Item = ({ item }) => (
         <div className={classes.price}>${item.value}</div>
       </header>
       <p>{item.description}</p>
-      <AddCartButton id={item.id}>Add to Cart</AddCartButton>
+      <AddCartButton onClick={() => addItem(item.id)}>
+        Add to Cart
+      </AddCartButton>
     </section>
   </li>
 );
 
-export default Item;
+export default connect(null, { addItem })(Item);

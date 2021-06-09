@@ -1,13 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { ADD_ITEM, REMOVE_ITEM } from "../redux/actionTypes";
 import { getTotalPurchace } from "../redux/selectors";
+import { addItem, removeItem } from "../redux/actions";
 
 import classes from "./CartItem.module.css";
 import ChangeQuantityButton from "./UI/ChangeQuantityButton ";
 
-const CartItem = ({ item }) => (
+const CartItem = ({ item, addItem, removeItem }) => (
   <li className={classes.item}>
     <header>
       <h3>{item.title}</h3>
@@ -22,17 +22,20 @@ const CartItem = ({ item }) => (
         x <span>{item.quantity}</span>
       </div>
       <div className={classes.actions}>
-        <ChangeQuantityButton id={item.id} actionType={REMOVE_ITEM}>
-          -
-        </ChangeQuantityButton>
-        <ChangeQuantityButton id={item.id} actionType={ADD_ITEM}>
+        <ChangeQuantityButton onClick={() => addItem(item.id)}>
           +
+        </ChangeQuantityButton>
+        <ChangeQuantityButton onClick={() => removeItem(item.id)}>
+          -
         </ChangeQuantityButton>
       </div>
     </div>
   </li>
 );
 
-export default connect((state) => ({
-  total: getTotalPurchace(state),
-}))(CartItem);
+export default connect(
+  (state) => ({
+    total: getTotalPurchace(state),
+  }),
+  { addItem, removeItem }
+)(CartItem);

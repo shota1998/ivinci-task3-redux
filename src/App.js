@@ -1,5 +1,10 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Redirect,
+  Route,
+  Switch,
+} from "react-router-dom";
 
 import classes from "./App.module.css";
 
@@ -13,8 +18,9 @@ export default class App extends React.Component {
       <div>
         <Header />
         <Switch>
-          <Route path="/cart" render={() => <Cart />} />
-          <Route path="/" render={() => <SelectItem />} />
+          <Route path='/' exact render={() => <SelectItem />} />
+          <Route path='/cart' render={() => <Cart />} />
+          <Redirect to='/' />
         </Switch>
       </div>
     );

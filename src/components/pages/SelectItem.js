@@ -11,7 +11,7 @@ const SelectItem = ({ items }) => (
     <h2>Buy your favorite products</h2>
     <ul>
       {items.map((item) => {
-        return <Item key={item.id} id={item.id} item={item} />;
+        return <Item key={item.id} item={item} />;
       })}
     </ul>
   </section>

@@ -11,7 +11,7 @@ const Cart = ({ items }) => (
     <h2>Your Shopping Cart</h2>
     <ul>
       {items.map((item) => {
-        return <CartItem key={item.id} id={item.id} item={item} />;
+        return <CartItem key={item.id} item={item} />;
       })}
     </ul>
   </section>
